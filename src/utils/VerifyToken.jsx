@@ -5,9 +5,13 @@ export default async () => {
   const API_URL = "http://localhost:4000/auth/verify";
   console.log(token);
   if (token) {
-    return await axios.post(API_URL, {
-      token
-    });
+    try {
+      return await axios.post(API_URL, {
+        token
+      });
+    } catch {
+      return false;
+    }
   } else {
     return false;
   }
